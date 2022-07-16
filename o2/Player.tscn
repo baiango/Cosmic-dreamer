@@ -1,0 +1,37 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://GDscript/Player.gd" type="Script" id=1]
+
+[sub_resource type="CapsuleShape" id=1]
+height = 3.0
+
+[sub_resource type="CylinderShape" id=2]
+
+[node name="Player" type="KinematicBody" groups=[
+"Player",
+]]
+input_ray_pickable = false
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+transform = Transform( 1.2, 0, 0, 0, -5.24537e-08, -1, 0, 1.2, -4.37114e-08, 0, 0, 0 )
+shape = SubResource( 1 )
+
+[node name="Foot" type="CollisionShape" parent="."]
+transform = Transform( 1.2, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.6, 0 )
+shape = SubResource( 2 )
+
+[node name="Head" type="Spatial" parent="."]
+
+[node name="Cam" type="Camera" parent="Head"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
+near = 0.01
+far = 500.0
+
+[node name="GroundCheck" type="RayCast" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 0 )
+enabled = true
+cast_to = Vector3( 0, -1.5, 0 )

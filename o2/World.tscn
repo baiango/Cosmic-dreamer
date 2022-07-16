@@ -1,0 +1,32 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Map.tscn" type="PackedScene" id=2]
+[ext_resource path="res://GDscript/Load.gd" type="Script" id=4]
+
+[node name="World" type="Spatial"]
+
+[node name="Map" parent="." instance=ExtResource( 2 )]
+
+[node name="Player" parent="." instance=ExtResource( 1 )]
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 10, 0 )
+
+[node name="LoadandFree" type="Timer" parent="."]
+wait_time = 0.001
+one_shot = true
+autostart = true
+script = ExtResource( 4 )
+
+[node name="StoreTree" type="Node" parent="."]
+
+[node name="OmniLight" type="OmniLight" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 256, 0 )
+light_color = Color( 0.588235, 0, 0.592157, 1 )
+light_energy = 0.1
+light_indirect_energy = 16.0
+light_specular = 1.0
+light_bake_mode = 0
+shadow_bias = 16.0
+omni_range = 2048.0
+omni_shadow_mode = 0
+omni_shadow_detail = 0
